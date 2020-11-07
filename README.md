@@ -14,7 +14,7 @@ Purpose | Command
   Stop all running container | docker stop \`docker ps -q\` 
   Remove all running containers | docker rm \`docker ps -q -a\`
   List of all images | docker images 
-  Pull a particular image from docker hub | docker pull <image_name>
+  Pull a particular image | docker pull <image_name>
   Run a particular image | docker run <image_name> <br/> docker run --name webapp nginx:1.14-alpine 
   Remove a image |  docker rm <image_id or image_name> 
   Remove all images | docker rmi -f \`docker images -q\` <br/> docker rmi \`docker images -q\` 
