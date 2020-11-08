@@ -10,18 +10,25 @@ Purpose | Command
   List of all (both running and stopped) container | docker ps -a 
   Details of a container | docker inspect <container_name>
   Logs of a container | docker logs <container_name>
+  Pause a running container | docker container pause <container_id>
+  Unpause a conntainer | docker container unpause <container_id>
   Stop a running container | docker stop <container_id or container_name>
   Remove a container | docker rm <container_id or container_name>
   Removing multiple container | docker rm <list of container_id or container_name separated by space>
-  Stop all running container | docker stop \`docker ps -q\` 
+  Stop all running container gracefully | docker stop \`docker ps -q\` 
+  Force stop container | docker kill <container_id>
   Remove all running containers | docker rm \`docker ps -q -a\`
+  Remove all inactive container | docker container prune
+  Start executing a container whenever the docker starts | --restart=always , default -> restart=no
   List of all images | docker images 
   Pull a particular image | docker pull <image_name>
   Run a particular image | <ol><li>docker run <image_name></li> <li>docker run --name <container_name> <image_name></li></ol> 
   Remove a image |  docker rm <image_id or image_name> 
   Remove all images | <ol><li>docker rmi -f \`docker images -q\` </li><li> docker rmi \`docker images -q\`</li></ol> 
   Remove all containers of a particular image |
-  
+  Create a new tag for an image | docker tag image_name:[image_tag] image_name:[new_tag]
+  Search available images with keyword from dockerhub | docker search <imagename-keyword>
+  Details of a image | docker inspect image <image_id>
 #### 2. Docker run
    
    There are 2 modes of running a docker image<br/>
@@ -51,7 +58,7 @@ Purpose | Command
   Command | Working
   ------------- | -------------
   docker run -P <image_name> | -P runs the application in a random port
-  docker run -p <redirect_port>:<default_port> <image_name> | -p redirects the application to a specific port
+  docker run -p <host_port>:<container_port> <image_name> | -p redirects the application to a specific port
   
 
   Volume : 
@@ -62,6 +69,15 @@ Purpose | Command
  docker run -v  /root/<any_folder_name>:<path_of_data's_in_image> | creates a path with given folder name in root and persist the data
  
  
- #### 3. Docker images
+ #### 3. Docker Options
+ 
+  Command | Working
+  ------------- | -------------
+ docker events | monitor the events of docker
+ docker top <container_id> | top process of the specific container
+ docker stat | gives details about memory,cpu..etc used by docker daemon
+ docker run -m <space m or gb> | allocate maximum memory docker can use on the host
+ docker run --cpu-quota <percentage> | cpu allocation for container (total 100000-100%,5000-5% _ slow)
+ docker system df | Resourse,size etc managed by daemon 
  
   
