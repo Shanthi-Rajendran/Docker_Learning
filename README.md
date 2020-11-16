@@ -25,7 +25,7 @@ Purpose | Command
   Run a particular image | <ol><li>docker run <image_name></li> <li>docker run --name <container_name> <image_name></li></ol> 
   Remove a image |  docker rm <image_id or image_name> 
   Remove all images | <ol><li>docker rmi -f \`docker images -q\` </li><li> docker rmi \`docker images -q\`</li></ol> 
-  Remove all containers of a particular image |
+  Remove all danging images | sudo docker images -f "dangling=true" -q
   Create a new tag for an image | docker tag image_name:[image_tag] image_name:[new_tag]
   Search available images with keyword from dockerhub | docker search <imagename-keyword>
   Details of a image | docker inspect image <image_id>
